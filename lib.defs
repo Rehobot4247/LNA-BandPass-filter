@@ -1,0 +1,6 @@
+INCLUDE $HPEESOF_DIR/oalibs/analog_rf.defs
+DEFINE LoRa_Transciever_lib LoRa_Transciever_lib
+ASSIGN LoRa_Transciever_lib libMode shared
+INCLUDE $HOME/Analog_Parts_vendor_kit/lib.defs
+DEFINE RFcourse2015_proj15_wrk_lib RFcourse2015_proj15_wrk_lib
+ASSIGN RFcourse2015_proj15_wrk_lib libMode shared

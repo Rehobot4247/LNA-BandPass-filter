@@ -1,0 +1,9 @@
+<!DOCTYPE SaveWorkspaceState>
+<SaveWorkspaceState>
+    <Windows>
+        <Schematic x1="32" cell="BPF_LNA" width="1280" view="schematic" y1="32" height="688" lib="LoRa_Transciever_lib"/>
+        <Schematic x1="52" cell="RX_868" width="1280" view="schematic" y1="52" height="688" lib="LoRa_Transciever_lib"/>
+        <DDS name="BPF_LNA.dds"/>
+    </Windows>
+    <MainWindowTab tab="1"/>
+</SaveWorkspaceState>

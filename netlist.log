@@ -1,0 +1,28 @@
+; Top Design: "LoRa_Transciever_lib:BPF_LNA:schematic"
+; Netlisted using Hierarchy Policy: "Standard"
+
+Options ResourceUsage=yes UseNutmegFormat=no EnableOptim=no TopDesignName="LoRa_Transciever_lib:BPF_LNA:schematic" DcopOutputNodeVoltages=yes DcopOutputPinCurrents=yes DcopOutputAllSweepPoints=no DcopOutputDcopType=0
+#uselib "sml" , "Amplifier2"
+Amplifier2:AMP1  N__4 vout S21=dbpolar(31,0) S11=dbpolar(-20,0) S22=polar(0,180) S12=0 NF=0.8 dB GainCompType=0 ReferToInput=0 SOI=42 TOI=32 GainCompSat=5.0 dB GainComp=1.0 dB ClipDataFile=1 
+#uselib "ckt" , "BPF_Elliptic"
+BPF_Elliptic:BPF1  N__0 N__9 Fcenter=868 MHz BWpass=5 MHz Ripple=1 dB BWstop=800 MHz Astop=40 dB StopType="open" N=3 IL=0.5 dB Qu=1E308 Z1=50 Ohm Z2=50 Ohm 
+Port:PORT1  N__0 0 Num=1 Z=50 Ohm P[1]=polar(dbmtow(-50),0) Freq[1]=868 MHz    Noise=yes Pac=polar(dbmtow(0),0) LimitPhaseNoiseToCarrier=no 
+Port:Term2  vout 0 Num=2 Z=50 Ohm Noise=yes 
+S_Param:SP1 CalcS=yes CalcY=no CalcZ=no GroupDelayAperture=1e-4 FreqConversion=no FreqConversionPort=1 StatusLevel=2 CalcNoise=no SortNoise=0 BandwidthForNoise=1.0 Hz DevOpPtLevel=0 \
+SweepVar="freq" SweepPlan="SP1_stim" OutputPlan="SP1_Output" 
+
+SweepPlan: SP1_stim Start=800 MHz Stop=900 MHz Step=0.1 MHz 
+
+OutputPlan:SP1_Output \
+      Type="Output" \
+      UseEquationNestLevel=yes \
+      EquationNestLevel=2 \
+      UseSavedEquationNestLevel=yes \
+      SavedEquationNestLevel=2
+
+#load "python","LinearCollapse"
+Component Module="LinearCollapse" Type="ModelExtractor" NetworkRepresentation=2
+#uselib "ckt" , "OSCwPhNoise"
+OSCwPhNoise:OSC1  N__5 Freq=868 MHz P=dbmtow(7) Rout=50 Ohm PhaseNoise=list(10Hz,-10dB, 100Hz,-40dB, 1kHz,-50dB,10kHz,-90dB,100kHz,-100dB) 
+#uselib "sml" , "Mixer2"
+Mixer2:MIX1  N__9 N__4 N__5 SideBand=0 OutputSidebandSuppression=-35 dB InputImageRejection=-35 dB ConvGain=dbpolar(6,0) RevConvGain=polar(0,0) SP11=dbpolar(-35,0) SP12=polar(0,0) SP13=polar(0,0) SP21=dbpolar(-31,0) SP22=polar(0,0) SP23=polar(0,0) SP31=dbpolar(-35,0) SP32=polar(-0,0) SP33=polar(0,0) PminLO=-100 DetBW=1e100 Hz Z1=50 Ohm Z2=50 Ohm Z3=50 Ohm GainCompType=0 ReferToInput=0 GainCompSat=5.0 dB GainComp=1.0 dB ClipDataFile=1 ImpMaxFreq=2 GHz ImpMaxOrder=32 ImpWindow=0 

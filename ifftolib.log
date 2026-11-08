@@ -1,0 +1,27 @@
+Netlist Translator (*) 490.shp Nov 12 2018
+IFF translation log
+
+Input format: PSpice
+Input filename: C:/Users/Rehobot/Desktop/FREELANCE/KEVIN/RFcourse2015_proj15_wrk.7zap
+
+Output format: IFF file
+Output filename: spice.iff
+
+Special options:
+    Processing first line as comment.
+
+Begin translation at Fri Nov 19 12:17:03 2021
+
+Creating schematic with named connections.
+Reading item definition file "C:\Program Files\Keysight\ADS2019/config\spctoiff.cfg"
+
+Translation completed at Fri Nov 19 12:17:03 2021.
+
+========================================================================
+End of Spice Translation Log file, beginning of IFF Translation Log File
+========================================================================
+
+Beginning IFF import
+Processing IFF file: C:\Users\Rehobot\LoRa_Transciever_wrk\spice.iff
+Cannot overwrite a design which exists in memory: UNNAMED
+IFF import complete
